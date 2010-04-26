@@ -4,6 +4,10 @@ Include the swc file from the bin folder into your app, initialize Failtale with
 Example Usage:
 --------------
 
+( complete example at http://github.com/webdevotion/Failtale-AS3-Example-Application )
+
+
+
 // create your own API key on www.failtale.be
 public static const FAILTALE_API_KEY : String = "your-api-key-goes-here";
 private var failtale : Failtale;
