@@ -1,4 +1,4 @@
-This AS3 library integrates seamlessly with the Failtale app ( www.failtale .be ).
+This AS3 library integrates seamlessly with the Failtale app ( www.failtale.be + http://github.com/mrhenry/failtale ).
 Include the swc file from the bin folder into your app, initialize Failtale with your API key and you're ready to roll.
 
 Example Usage:
