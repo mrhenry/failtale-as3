@@ -86,8 +86,8 @@ package be.mrhenry.failtale
 				}
 			}
 			
-			var errorName : String = describeType(fm.error);
-			
+			var errorName : String = fm.error.name; // should define a better way to get a more descriptive name
+			trace(errorName);
 			xmlString += "<report>";
 			xmlString += "<project><api_token>"+fm.api+"</api_token></project>";
 			xmlString += "<error><hash_string>Error ID "+fm.error.errorID + ": " + fm.error.name+"</hash_string></error>";
