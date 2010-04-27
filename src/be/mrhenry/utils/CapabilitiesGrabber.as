@@ -1,15 +1,34 @@
 package be.mrhenry.utils {
-	import flash.system.Capabilities;
+	import flash.display.Sprite;
 	import flash.external.ExternalInterface;
 	import flash.net.URLVariables;
-	import flash.display.Sprite;
+	import flash.system.Capabilities;
+	import flash.utils.getDefinitionByName;
+	import flash.utils.getQualifiedClassName;
 	
 	public class CapabilitiesGrabber 
 	{
 		public static function getCapabilities():Array 
 		{
+			
+			var isFlexApplication : Boolean = false;
+			
+			try
+			{
+				// FIXME add Flex SDK versioning
+				// flex 4 only
+				// getDefinitionByName("spark.components.Application");
+				// flex
+				getDefinitionByName("mx.controls.Alert");
+				
+				isFlexApplication = true;
+			}catch( e : Error ){
+				isFlexApplication = false;
+			}
+			
 			var capDP:Array = new Array();
-			capDP.push({name:"Capabilities.avHardwareDisable", value:Capabilities.avHardwareDisable}); 
+			capDP.push({name:"Capabilities.avHardwareDisable", value:Capabilities.avHardwareDisable});
+			capDP.push({name:"Capabilities.isFlexApplication", value:isFlexApplication});
 			capDP.push({name:"Capabilities.hasAccessibility", value:Capabilities.hasAccessibility}); 
 			capDP.push({name:"Capabilities.hasAudio", value:Capabilities.hasAudio}); 
 			capDP.push({name:"Capabilities.hasAudioEncoder", value:Capabilities.hasAudioEncoder}); 
