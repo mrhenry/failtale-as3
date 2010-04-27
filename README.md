@@ -8,12 +8,13 @@ A more complete example is available [here](http://github.com/webdevotion/Failta
 
     // create your own API key on www.failtale.be
     public static const FAILTALE_API_KEY : String = "your-api-key-goes-here";
+    public static const FAILTALE_GATEWAY : String = "http://failtale.be";
     private var failtale : Failtale;
     
     private function initFailtale () : void
     {
       failtale = Failtale.getInstance();
-      failtale.init( FAILTALE_API_KEY );
+      failtale.init( FAILTALE_GATEWAY, FAILTALE_API_KEY );
     }
     
     // what follows is a poor example probably
