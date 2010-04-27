@@ -1,6 +1,6 @@
 # Failtale AS3
 
-This AS3 library integrates seamlessly with the Failtale app ([homepage][home], [GitHub][github] ). Include the SWC file from the bin folder into your app, initialize Failtale with your API key and you're ready to roll.
+This AS3 library integrates seamlessly with the Failtale app ([homepage][home], [GitHub][github]). Include the SWC file from the bin folder into your app, initialize Failtale with your API key and you're ready to roll.
 
 ## Example Usage:
 
@@ -39,7 +39,7 @@ A more complete example is available [here](http://github.com/webdevotion/Failta
     }
 
 -- Failtale  
-Tells you more about failing applications
+Tells you more about failing applications.
 
   [home]: www.failtale.be
   [github]: http://github.com/mrhenry/failtale
