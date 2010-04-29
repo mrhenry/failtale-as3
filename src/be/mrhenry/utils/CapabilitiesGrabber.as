@@ -11,7 +11,7 @@ package be.mrhenry.utils {
 		public static function getCapabilities():Array 
 		{
 			
-			var isFlexApplication : Boolean = false;
+			var sdk : String = "flash";
 			
 			try
 			{
@@ -19,16 +19,28 @@ package be.mrhenry.utils {
 				// flex 4 only
 				// getDefinitionByName("spark.components.Application");
 				// flex
-				getDefinitionByName("mx.controls.Alert");
-				
-				isFlexApplication = true;
+				if( getDefinitionByName("mx.controls.Alert") != null )
+				{
+					try
+					{
+						if( getDefinitionByName("flash.data.SQLConnection")!=null )
+						{
+							sdk = "air";
+						}else{
+							sdk = "flex";
+						}
+					}catch( e : Error ) 
+					{
+						sdk = "flex";
+					}
+				}
 			}catch( e : Error ){
-				isFlexApplication = false;
+				sdk = "flash";
 			}
 			
 			var capDP:Array = new Array();
 			capDP.push({name:"Capabilities.avHardwareDisable", value:Capabilities.avHardwareDisable});
-			capDP.push({name:"Capabilities.isFlexApplication", value:isFlexApplication});
+			capDP.push({name:"Capabilities.sdk", value:sdk});
 			capDP.push({name:"Capabilities.hasAccessibility", value:Capabilities.hasAccessibility}); 
 			capDP.push({name:"Capabilities.hasAudio", value:Capabilities.hasAudio}); 
 			capDP.push({name:"Capabilities.hasAudioEncoder", value:Capabilities.hasAudioEncoder}); 
