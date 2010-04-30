@@ -101,7 +101,8 @@ package be.mrhenry.failtale
 			// check if the error has occured before in this session
 			// if so: don't send the error to the server
 			var a : Array = fm.error.getStackTrace().toString().split("\n");
-			var errorName : String = a[1].split("[")[1].split("]")[0];
+			//var errorName : String = a[1].split("[")[1].split("]")[0];
+			var errorName : String = a[0];
 			
 			if( __errors[errorName] == null )
 			{
@@ -146,15 +147,15 @@ package be.mrhenry.failtale
 				}
 			}
 			
-			var isFlexApplication : Boolean = false;
+			var sdk : String = "flash";
 			// flash player capabilities go at the bottom
 			var capabilities : Array = CapabilitiesGrabber.getCapabilities();
 			for each( var capability  : Object in capabilities )
 			{
 				props+="<"+capability.name+">" + capability.value +"</"+capability.name+">";
-				if( capability.name == "Capabilities.isFlexApplication" )
+				if( capability.name.toLowerCase() == "capabilities.sdk" )
 				{
-					isFlexApplication = capability.value;
+					sdk = capability.value;
 				}
 			}
 			
@@ -164,7 +165,7 @@ package be.mrhenry.failtale
 			xmlString += "<occurence>";
 			xmlString += "<name>"+errorName+"</name>";
 			xmlString += "<description>"+fm.error.message+"</description>";
-			xmlString += "<reporter>"+( isFlexApplication ? "flex" : "flash" )+"</reporter>";
+			xmlString += "<reporter>"+sdk+"</reporter>";
 			xmlString += "<backtrace>"+ fm.error.getStackTrace() +"</backtrace>";
 			xmlString += "<properties>"+ props +"</properties>";
 			xmlString += "</occurence>";
